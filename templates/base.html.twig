@@ -7,10 +7,11 @@
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
-        {{ encore_entry_link_tags('portfolio-assets') }}
-        {% endblock %}
+			{{ encore_entry_link_tags('portfolio-assets') }}
+		{% endblock %}
+			<script src="https://kit.fontawesome.com/9a8d789322.js" crossorigin="anonymous"></script>
 	</head>
-	<body>
+	<body class="">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#">Navbar</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,26 +21,24 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home
+						<a class="nav-link" href="{{path('main')}}">Accueil
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Dropdown
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+						<a class="nav-link" href="{{path('academic_index')}}">Profil</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+						<a class="nav-link" href="{{path('experience_index')}}">Expériences</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('project_index')}}">Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Forum</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
@@ -49,6 +48,49 @@
 			</div>
 		</nav>
 		{% block body %}{% endblock %}
-		{% block javascripts %}{% endblock %}
+
+		<!-- Footer Start -->
+		<div class="footer wow fadeIn">
+			<div class="container-fluid">
+				<div class="container">
+					<div class="footer-info">
+						<h2>Kate Winslet</h2>
+						<h3>123 Street, New York, USA</h3>
+						<div class="footer-menu">
+							<p>+012 345 67890</p>
+							<p>info@example.com</p>
+						</div>
+						<div class="footer-social">
+							<a href="#">
+								<i class="fab fa-twitter"></i>
+							</a>
+							<a href="#">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+							<a href="#">
+								<i class="fab fa-youtube"></i>
+							</a>
+							<a href="#">
+								<i class="fab fa-instagram"></i>
+							</a>
+							<a href="#">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="container copyright">
+					<p>&copy;
+						<a href="#">Your Site Name</a>, All Right Reserved | Designed By
+						<a href="https://htmlcodex.com">HTML Codex</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer End -->
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('portfolio-assets') }}
+		{% endblock %}
 	</body>
 </html>

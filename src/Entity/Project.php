@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,10 +29,6 @@ class Project
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $stack;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -51,6 +49,16 @@ class Project
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Stack::class, mappedBy="project")
+     */
+    private $stacks;
+
+    public function __construct()
+    {
+        $this->stacks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,18 +85,6 @@ class Project
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getStack(): ?string
-    {
-        return $this->stack;
-    }
-
-    public function setStack(string $stack): self
-    {
-        $this->stack = $stack;
 
         return $this;
     }
@@ -137,6 +133,33 @@ class Project
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stack[]
+     */
+    public function getStacks(): Collection
+    {
+        return $this->stacks;
+    }
+
+    public function addStack(Stack $stack): self
+    {
+        if (!$this->stacks->contains($stack)) {
+            $this->stacks[] = $stack;
+            $stack->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStack(Stack $stack): self
+    {
+        if ($this->stacks->removeElement($stack)) {
+            $stack->removeProject($this);
+        }
 
         return $this;
     }
