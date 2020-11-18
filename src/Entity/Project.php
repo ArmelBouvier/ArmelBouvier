@@ -55,6 +55,11 @@ class Project
      */
     private $stacks;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $githubUrl;
+
     public function __construct()
     {
         $this->stacks = new ArrayCollection();
@@ -160,6 +165,18 @@ class Project
         if ($this->stacks->removeElement($stack)) {
             $stack->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getGithubUrl(): ?string
+    {
+        return $this->githubUrl;
+    }
+
+    public function setGithubUrl(?string $githubUrl): self
+    {
+        $this->githubUrl = $githubUrl;
 
         return $this;
     }

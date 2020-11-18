@@ -25,7 +25,7 @@ class Academic
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $shcool;
+    private $school;
 
     /**
      * @ORM\Column(type="datetime")
@@ -43,7 +43,7 @@ class Academic
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default"= "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -69,14 +69,14 @@ class Academic
         return $this;
     }
 
-    public function getShcool(): ?string
+    public function getschool(): ?string
     {
-        return $this->shcool;
+        return $this->school;
     }
 
-    public function setShcool(string $shcool): self
+    public function setschool(string $school): self
     {
-        $this->shcool = $shcool;
+        $this->school = $school;
 
         return $this;
     }

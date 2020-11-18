@@ -39,6 +39,11 @@ class Stack
      */
     private $project;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $type;
+
     public function __construct()
     {
         $this->project = new ArrayCollection();
@@ -105,6 +110,18 @@ class Stack
     public function removeProject(Project $project): self
     {
         $this->project->removeElement($project);
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
