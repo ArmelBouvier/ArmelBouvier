@@ -6,13 +6,15 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
+			<link rel="preconnect" href="https://fonts.gstatic.com">
+			<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> 
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('portfolio-assets') }}
 		{% endblock %}
 			<script src="https://kit.fontawesome.com/9a8d789322.js" crossorigin="anonymous"></script>
 	</head>
 	<body class="">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Navbar</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -36,15 +38,17 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Forum</a>
+					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
 				</form>
 			</div>
 		</nav>
+		<main>
 		{% block body %}{% endblock %}
-
+		</main>
 		<!-- Footer Start -->
 		<div class="footer wow fadeIn">
 			<div class="container-fluid">
@@ -86,6 +90,7 @@
 		<!-- Footer End -->
 
 		{% block javascripts %}
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
 			{{ encore_entry_script_tags('portfolio-assets') }}
 		{% endblock %}
 	</body>

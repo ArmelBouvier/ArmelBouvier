@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Hello MainController!
+{% endblock %}
 
 {% block body %}
+	<header class="homepage-header">
+        <div class="container pt-5">
+            <div class="col-12">
+                <h1 class="display-1 font-weight-bolder text-dark">Armel Bouvier</h1>
+                <h2 class="display-3 text-light">Développeur PHP</h2>
+            </div>
+        </div>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="none">
+            <polygon fill="white" points="0,200 200,0 200,200"/>
+        </svg>
+	</header>
 
-<div class="container">
-    <div class="row">
-        <h1 class="display-1 font-weight-bolder">Armel Bouvier</h1>
-    </div>
-    <div class="row">
-        <h2 class="display-2">Développeur PHP</h2>
-    </div>
-    <div class="row">
-    <a href="#" class="btn btn-dark">Me connaître</a>
-    <a href="#" class="btn btn-outline-dark">Me contacter</a>
-    </div>
-</div>
+        <div class="btn-custom">
+            <div class="grx" title="Me connaître"><i class="fas fa-address-card"></i></div>   
+        </div>
+        <div class="btn-custom b">
+            <div class="grx" title="Me contacter"><i class="far fa-envelope"></i></div>   
+        </div>
+
 {% endblock %}
