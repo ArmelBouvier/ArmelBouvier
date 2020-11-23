@@ -14,7 +14,7 @@
 			<script src="https://kit.fontawesome.com/9a8d789322.js" crossorigin="anonymous"></script>
 	</head>
 	<body class="">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Navbar</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="{{path('main')}}">Accueil
+						<a class="nav-link" href="{{path('browse')}}">Accueil
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
@@ -50,7 +50,7 @@
 		{% block body %}{% endblock %}
 		</main>
 		<!-- Footer Start -->
-		<div class="footer wow fadeIn">
+		<div class="footer bg-dark text-white">
 			<div class="container-fluid">
 				<div class="container">
 					<div class="footer-info">

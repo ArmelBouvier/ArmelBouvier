@@ -1,0 +1,1 @@
+import 'bootswatch/dist/flatly/bootstrap.min.css';
