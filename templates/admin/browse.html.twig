@@ -4,13 +4,18 @@
 
 {% block body %}
  <div class="container-fluid">
-    <div class="row">
-        <div class="col-3 bg-warning">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet molestiae ea ipsum alias odit quas dolore unde, consequuntur minima quis ut quaerat veritatis tenetur aliquid deleniti repudiandae perspiciatis adipisci.
-            </p>
+    <div class="row py-5 bg-primary">
+        <div class="col-3 ">
+            <h2 class="text-success">Menu Admin</h2>
+            <ul>
+                <li class="text-white"><a class="text-white" href="{{ path('academic_browse') }}">Formation</a></li>
+                <li class="text-white"><a class="text-white" href="#">Expériences</a></li>
+                <li class="text-white"><a class="text-white" href="#">Projets</a></li>
+                <li class="text-white"><a class="text-white" href="#">Forum</a></li>
+            </ul>
         </div>
-        <div class="col-9">
+        <div class="col-9 bg-dark text-center">
+            <h2 class="text-white">Tableau de bord</h2>
         </div>
     </div>
  </div>

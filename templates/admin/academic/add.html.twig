@@ -1,0 +1,14 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}{{parent()}} | Formation{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Ajouter une nouvelle formation</h1>
+
+        {{ include('admin/academic/_form.html.twig') }}
+
+        <a href="{{ path('academic_browse') }}">Retour à la liste des formations</a>
+    </div>
+    
+{% endblock %}

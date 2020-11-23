@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Academic;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Date;
@@ -22,18 +23,12 @@ class AcademicType extends AbstractType
                 'constraints' => new NotBlank,
                 'label' => 'Nom de l\'établissement',
             ])
-            ->add('startedAt', null, [
-                'constraints' => [
-                    new NotBlank,
-                    new Date,
-                ],
+            ->add('startedAt', DateType::class, [
+                'widget' => 'single_text',  
                 'label' => 'Date de début de la formation',
             ])
-            ->add('endedAt', null, [
-                'constraints' => [
-                    new NotBlank,
-                    new Date,
-                ],
+            ->add('endedAt', DateType::class, [
+                'widget' => 'single_text',                
                 'label' => 'Date de fin de la formation',
             ])
             ->add('description', null, [

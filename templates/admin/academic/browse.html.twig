@@ -1,0 +1,46 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}{{parent()}} | Formation{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <h1>Liste des formations effectuées :</h1>
+            <div><a href="{{ path('academic_add') }}" class="btn btn-secondary">Ajouter</a></div>
+            <table class="table table-dark">
+                <thead class="text-warning">
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Ecole</th>
+                    <th>Période</th>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <th>Actions</th>
+                    {% endif %}
+                </thead>
+                <tbody>
+                {% for movie in movies %}
+                    <tr>
+                    <th scope="row">{{ movie.id }}</th>
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.createdAt|date('Y-M-d H:i') }}</td>
+                    <td>{% if movie.updatedAt is not null %}{{ movie.updatedAt|date('Y-M-d H:i') }}{% endif %}</td>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <td>                    
+                        <a class="btn btn-primary" href="{{ path('admin_movie_edit', {id: movie.id}) }}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <form action="{{ path('admin_movie_delete', {id: movie.id}) }}" method="post" class="d-inline">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
+                    </td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -2,13 +2,19 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: auto
+
 
     providers:
         our_db_provider:
             entity:
                 class: App\Entity\User
                 property: username
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
 
     firewalls:
         dev:
@@ -39,18 +45,18 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginAuthenticator
+                    - App\Security\LoginFormAuthenticator
+                entry_point: App\Security\LoginFormAuthenticator
             
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin/(question|answer)/toggle, roles: ROLE_MODERATOR }
-        - { path: ^/admin/(tag|user), roles: ROLE_MODERATOR }
-        - { path: ^/answer/validate, roles: ROLE_USER }
-        - { path: ^/question/add, roles: ROLE_USER }
-        - { path: ^/question/\d+, roles: ROLE_USER, methods: ["POST"] }
-        - { path: ^/user/(profile|edit), roles: ROLE_USER }
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/admin/[a-z]+/(add|new|edit|delete), roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     role_hierarchy:
-        ROLE_ADMIN: ROLE_MODERATOR
-        ROLE_MODERATOR: ROLE_USER
+        ROLE_ADMIN: ROLE_USER
