@@ -38,10 +38,24 @@
 						<a class="nav-link" href="#">Forum</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-				</form>
+				<div class="text-white" id="logged-user">
+					{% if app.user %}
+						{# Bouton de déconnexion avec nom d'utiliser#}
+						{{ app.user.username}}
+						(
+						{% if is_granted('ROLE_ADMIN') %}
+							Administrateur
+						{% else %}
+							Utilisateur
+						{% endif %}
+						)
+						<a href="{{ logout_path() }}" class="btn btn-danger">Déconnexion</a>
+					{% else %}
+						{# Bouton de connexion #}
+						Visiteur
+						<a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
+					{% endif %}
+				</div>
 			</div>
 		</nav>
 		{# display every flash message available #}
@@ -52,7 +66,7 @@
 				</div>
 			{% endfor %}
 		{% endfor %}
-		<main>
+		<main class="py-5">
 		{% block body %}{% endblock %}
 		</main>
 

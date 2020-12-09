@@ -12,8 +12,9 @@ header.homepage-header {
     height: 10vw;
   }
 
+ 
 .btn-custom{position:absolute;right:300px;bottom:300px;}
-.btn-custom .grx{
+  .btn-custom .grx{
     position:absolute;
     left:-20px;top:-20px;
     width:80px;height:80px;
@@ -24,15 +25,13 @@ header.homepage-header {
     text-align:center;
     background-color:#343a40;
     color: #DCE35B;
-}
-.btn-custom.b{
-    right:500px;
-    }
-.btn-custom .hit{
+  }
+  .btn-custom.b{right:500px;}
+  
+  .btn-custom .hit{
     position:absolute;
     left:0;top:0;
     width:200px;height:200px;
     border-radius:200px;
-    /*background:#f1f1f1;opacity:.5;*/
     transform:translate(-50%,-50%);cursor:pointer;
-}
+  }

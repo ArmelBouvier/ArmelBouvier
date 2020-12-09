@@ -13,30 +13,26 @@
                     <th>Titre</th>
                     <th>Ecole</th>
                     <th>Période</th>
-                    {% if is_granted("ROLE_ADMIN") %}
                     <th>Actions</th>
-                    {% endif %}
                 </thead>
                 <tbody>
-                {% for movie in movies %}
+                {% for formation in formations %}
                     <tr>
-                    <th scope="row">{{ movie.id }}</th>
-                    <td>{{ movie.title }}</td>
-                    <td>{{ movie.createdAt|date('Y-M-d H:i') }}</td>
-                    <td>{% if movie.updatedAt is not null %}{{ movie.updatedAt|date('Y-M-d H:i') }}{% endif %}</td>
-                    {% if is_granted("ROLE_ADMIN") %}
-                    <td>                    
-                        <a class="btn btn-primary" href="{{ path('admin_movie_edit', {id: movie.id}) }}">
+                    <th scope="row">{{ formation.id }}</th>
+                    <td>{{ formation.getDiplomaTitle() }}</td>
+                    <td>{{ formation.getschool() }}</td>
+                    <td>De {{ formation.startedAt|date('M Y') }} à {{ formation.endedAt|date('M Y') }}
+                    <td class="d-block">                    
+                        <a class="btn btn-primary" href="{{ path('academic_edit', {id: formation.id}) }}">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <form action="{{ path('admin_movie_delete', {id: movie.id}) }}" method="post" class="d-inline">
+                        <form action="{{ path('academic_delete', {id: formation.id}) }}" method="post" class="d-inline">
                             <button class="btn btn-danger">
                                 <i class="fa fa-trash"></i>
                             </button>
                             <input type="hidden" name="_method" value="DELETE">
                         </form>
                     </td>
-                    {% endif %}
                     </tr>
                 {% endfor %}  
                 </tbody>
