@@ -2,46 +2,45 @@
 
 namespace App\Form;
 
-use App\Entity\Academic;
+use App\Entity\Experience;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class AcademicType extends AbstractType
+class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('diploma_title', null, [
+            ->add('name', null, [
                 'constraints' => new NotBlank,
-                'label' => 'Titre du diplôme',
+                'label' => 'Intitulé du poste',
             ])
-            ->add('school', null, [
+            ->add('company', null, [
                 'constraints' => new NotBlank,
-                'label' => 'Nom de l\'établissement',
-            ])
-            ->add('startedAt', DateType::class, [
-                'widget' => 'single_text',  
-                'label' => 'Date de début de la formation',
-            ])
-            ->add('endedAt', DateType::class, [
-                'widget' => 'single_text',                
-                'label' => 'Date de fin de la formation',
+                'label' => 'Nom de l\'entreprise',
             ])
             ->add('description', null, [
                 'constraints' => new NotBlank,
-                'label' => 'Description de la formation',
+                'label' => 'Description du travail effectué',
             ])
+            ->add('startedAt', DateType::class, [
+                'widget' => 'single_text',  
+                'label' => 'Date de début du poste',
+            ])
+            ->add('endedAt', DateType::class, [
+                'widget' => 'single_text',                
+                'label' => 'Date de fin du poste',
+            ])            
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Academic::class,
+            'data_class' => Experience::class,
         ]);
     }
 }

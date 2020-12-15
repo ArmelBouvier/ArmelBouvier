@@ -33,7 +33,6 @@ class AcademicController extends AbstractController
         $academic = new Academic();
         $form = $this->createForm(AcademicType::class, $academic);
         $form->handleRequest($request);
-        // dd($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
