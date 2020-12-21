@@ -21,6 +21,7 @@ class StackType extends AbstractType
                 'label' => 'Nom de la technologie',
             ])
             ->add('image', FileType::class, [
+                'data_class' => null,
                 'label' => 'Choisir un logo',
             ])
             ->add('genre')
