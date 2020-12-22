@@ -13,8 +13,8 @@
 		{% endblock %}
 		<script src="https://kit.fontawesome.com/9a8d789322.js" crossorigin="anonymous"></script>
 	</head>
-	<body class="">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark">
 			<a class="navbar-brand" href="#">Navbar</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -23,30 +23,30 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="{{path('browse')}}">Accueil
+						<a class="nav-link rounded mx-2" href="{{path('browse')}}">Accueil
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Profil</a>
+						<a class="nav-link rounded mx-2" href="{{path('profil')}}">Profil</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Expériences</a>
+						<a class="nav-link rounded mx-2" href="{{path('experiences')}}">Expériences</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#}">Portfolio</a>
+						<a class="nav-link rounded mx-2" href="{{path('portfolio')}}">Portfolio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Forum</a>
+						<a class="nav-link rounded mx-2" href="#">Forum</a>
 					</li>
 					{% if is_granted('ROLE_ADMIN') %}
 					<li class="nav-item">
-						<a class="nav-link" href="{{path('admin_browse')}}">Administration</a>
+						<a class="nav-link rounded mx-2" href="{{path('admin_browse')}}">Administration</a>
 					</li>
 					{% endif %}
 				</ul>
 				<div class="text-white" id="logged-user">
-					{# S03E014 : Bouton de connexion/déconnexion selon le statut de l'utilisateur #}
+					{# Bouton de connexion/déconnexion selon le statut de l'utilisateur #}
 					{% if app.user %}
 						{# Bouton de déconnexion avec nom d'utiliser#}
 						{{ app.user.username}}
@@ -61,12 +61,12 @@
 					{% else %}
 						{# Bouton de connexion #}
 						Visiteur
-						<a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a>
+						<a href="{{ path('app_login') }}" class="btn btn-outline-light">Connexion</a>
 					{% endif %}
 				</div>
 			</div>
 		</nav>
-		<main>
+		<main class="container-fluid p-5">
 			{% block body %}{% endblock %}
 		</main>
 		<!-- Footer Start -->
