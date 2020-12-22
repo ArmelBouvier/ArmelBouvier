@@ -25,7 +25,7 @@ class Project
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $description;
 
@@ -43,6 +43,11 @@ class Project
      * @ORM\ManyToMany(targetEntity=Stack::class, inversedBy="projects")
      */
     private $stack;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link;
 
     public function __construct()
     {
@@ -122,6 +127,18 @@ class Project
     public function removeStack(Stack $stack): self
     {
         $this->stack->removeElement($stack);
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

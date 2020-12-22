@@ -2,17 +2,17 @@
 
 {% block title %}
 	{{parent()}}
-	| Technologies
+	| Projets
 {% endblock %}
 
 {% block body %}
 
 	<div class="container">
-		<h1>Modifier l'expérience professionnelle</h1>
+		<h1>Modifier le projet</h1>
 
 		{{ include('admin/experience/_form.html.twig') }}
 
-		<a href="{{ path('experience_browse') }}">Retour à la liste des expériences</a>
+		<a href="{{ path('experience_browse') }}">Retour à la liste des projets</a>
 	</div>
 
 {% endblock %}

@@ -38,6 +38,7 @@ class StackController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $form['image']->getData();
             $directory = $this->getParameter('kernel.project_dir').'/public/images';
+            $stack->setImage($file->getClientOriginalName());
             $file->move($directory, $file->getClientOriginalName());
             $entityManager = $this->getDoctrine()->getManager();
             $stack->setCreatedAt(new \DateTime());
@@ -64,7 +65,7 @@ class StackController extends AbstractController
         $em->remove($stack);
         $em->flush();
 
-        $this->addFlash('success', 'Expérience supprimée');
+        $this->addFlash('success', 'Technologie supprimée');
         return $this->redirectToRoute('stack_browse');
     }
 
@@ -87,7 +88,7 @@ class StackController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             // On peut rediriger l'utilisateur vers la liste des expériences
-            $this->addFlash('success', 'Expérience modifiée');
+            $this->addFlash('success', 'Technologie modifiée');
             return $this->redirectToRoute('stack_browse');
         }
 
