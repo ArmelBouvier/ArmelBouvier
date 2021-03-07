@@ -1,117 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('portfolio-assets') }}
-		{% endblock %}
-		<script src="https://kit.fontawesome.com/9a8d789322.js" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark">
-			<a class="navbar-brand" href="#">Navbar</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link rounded mx-2" href="{{path('browse')}}">Accueil
-							<span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link rounded mx-2" href="{{path('profil')}}">Profil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link rounded mx-2" href="{{path('experiences')}}">Expériences</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link rounded mx-2" href="{{path('portfolio')}}">Portfolio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link rounded mx-2" href="#">Forum</a>
-					</li>
-					{% if is_granted('ROLE_ADMIN') %}
-					<li class="nav-item">
-						<a class="nav-link rounded mx-2" href="{{path('admin_browse')}}">Administration</a>
-					</li>
-					{% endif %}
-				</ul>
-				<div class="text-white" id="logged-user">
-					{# Bouton de connexion/déconnexion selon le statut de l'utilisateur #}
-					{% if app.user %}
-						{# Bouton de déconnexion avec nom d'utiliser#}
-						{{ app.user.username}}
-						(
-						{% if is_granted('ROLE_ADMIN') %}
-							Administrateur
-						{% else %}
-							Utilisateur
-						{% endif %}
-						)
-						<a href="{{ logout_path() }}" class="btn btn-danger">Déconnexion</a>
-					{% else %}
-						{# Bouton de connexion #}
-						Visiteur
-						<a href="{{ path('app_login') }}" class="btn btn-outline-light">Connexion</a>
-					{% endif %}
-				</div>
-			</div>
-		</nav>
-		<main class="container-fluid p-5">
-			{% block body %}{% endblock %}
-		</main>
-		<!-- Footer Start -->
-		<div class="footer bg-dark text-white">
-			<div class="container-fluid">
-				<div class="container">
-					<div class="footer-info">
-						<h2>Kate Winslet</h2>
-						<h3>123 Street, New York, USA</h3>
-						<div class="footer-menu">
-							<p>+012 345 67890</p>
-							<p>info@example.com</p>
-						</div>
-						<div class="footer-social">
-							<a href="#">
-								<i class="fab fa-twitter"></i>
-							</a>
-							<a href="#">
-								<i class="fab fa-facebook-f"></i>
-							</a>
-							<a href="#">
-								<i class="fab fa-youtube"></i>
-							</a>
-							<a href="#">
-								<i class="fab fa-instagram"></i>
-							</a>
-							<a href="#">
-								<i class="fab fa-linkedin-in"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="container copyright">
-					<p>&copy;
-						<a href="#">Your Site Name</a>, All Right Reserved | Designed By
-						<a href="https://htmlcodex.com">HTML Codex</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- Footer End -->
-
-		{% block javascripts %}
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
-			{{ encore_entry_script_tags('portfolio-assets') }}
-		{% endblock %}
-	</body>
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
 </html>
